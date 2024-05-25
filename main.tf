@@ -4,7 +4,7 @@ locals {
       name = "${sa.name}-${kind}"
       kind = kind
       id   = sa.id
-  }]]) : object.name => object }
+  }] if sa != null]) : object.name => object }
 }
 
 resource "databricks_mws_ncc_binding" "this" {
