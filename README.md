@@ -1,7 +1,59 @@
-# Azure <> Terraform module
-Terraform module for creation Azure <>
+# Azure Databricks Network Connectivity Config Terraform module
+Terraform module for creation Azure Databricks NCC
 
 ## Usage
+This module provisions Databricks Network Connectivity Config workspace bindings and private endpoints rules for your Storage Accounts (i.e. Private Endpoints for blob and dfs in Databricks Control Plane).
+```hcl
+variable "databricks_account_id" {}
+variable "databricks_metastore_id" {}
+variable "databricks_ncc_id" {}
+
+data "azurerm_databricks_workspace" "example" {
+  name                = "example-workspace"
+  resource_group_name = "example-rg"
+}
+
+data "azurerm_storage_account" "example" {
+  name                = "mystorageaccount"
+  resource_group_name = "example-rg"
+}
+
+provider "databricks" {
+  alias      = "account"
+  host       = "https://accounts.azuredatabricks.net"
+  account_id = var.databricks_account_id
+}
+
+#NOTE: Network Connectivity Config works only with Unity Catalog assigned Workspaces
+module "metastore_assignment" {
+  source  = "data-platform-hq/metastore-assignment/databricks"
+  version = "~> 1.0"
+
+  workspace_id = data.databricks_workspace.example.workspace_id
+  metastore_id = var.databricks_metastore_id
+
+  providers = {
+    databricks = databricks.account
+  }
+}
+
+module "databricks_workspace_ncc" {
+  source  = "data-platform-hq/ncc/databricks"
+  version = "~> 1.0"
+
+  network_connectivity_config_id = var.databricks_ncc_id
+  databricks_workspace_id        = data.databricks_workspace.example.workspace_id
+  storage_accounts = [
+    { name = data.azurerm_storage_account.example.name, id = data.azurerm_storage_account.example.id },
+  ]
+
+  providers = {
+    databricks = databricks.account
+  }
+
+  depends_on = [modules.metastore_assignment]
+}
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
