@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/data-platform-hq/terraform-databricks-ncc/compare/v1.0.0...v1.0.1) (2024-05-25)
+
+
+### Bug Fixes
+
+* filter out nullable values from storage accounts var ([c2ec3b3](https://github.com/data-platform-hq/terraform-databricks-ncc/commit/c2ec3b3bd0fc903182d8cde9b8c04226f3a50159))
+
 # 1.0.0 (2024-05-25)
 
 
