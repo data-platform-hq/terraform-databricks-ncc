@@ -82,11 +82,11 @@ No modules.
 
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_databricks_workspace_id"></a> [databricks\_workspace\_id](#input\_databricks\_workspace\_id) | Target Databricks Workspace id | `string` | n/a | yes |
-| <a name="input_network_connectivity_config_id"></a> [network\_connectivity\_config\_id](#input\_network\_connectivity\_config\_id) | Existing Network Connectivity Config  ID in Databricks Account | `string` | n/a | yes |
-| <a name="input_storage_accounts"></a> [storage\_accounts](#input\_storage\_accounts) | List of object with parameters to configure NCC for Storage Account. Both blob and dfs private endpoints would be provisioned | <pre>list(object({<br>    name = string<br>    id   = string<br>  }))</pre> | n/a | yes |
+| Name                                                                                                                                   | Description                                                                                                                   | Type | Default | Required |
+|----------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|------|---------|:--------:|
+| <a name="input_databricks_workspace_id"></a> [databricks\_workspace\_id](#input\_databricks\_workspace\_id)                            | Target Databricks Workspace id                                                                                                | `string` | n/a | yes |
+| <a name="input_network_connectivity_config_name"></a> [network\_connectivity\_config\_name](#input\_network\_connectivity\_config\_id) | Existing Network Connectivity Config name in Databricks Account                                                               | `string` | n/a | yes |
+| <a name="input_storage_accounts"></a> [storage\_accounts](#input\_storage\_accounts)                                                   | List of object with parameters to configure NCC for Storage Account. Both blob and dfs private endpoints would be provisioned | <pre>list(object({<br>    name = string<br>    id   = string<br>  }))</pre> | n/a | yes |
 
 ## Outputs
 

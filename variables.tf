@@ -3,9 +3,9 @@ variable "databricks_workspace_id" {
   description = "Target Databricks Workspace id"
 }
 
-variable "network_connectivity_config_id" {
+variable "network_connectivity_config_name" {
   type        = string
-  description = "Existing Network Connectivity Config  ID in Databricks Account"
+  description = "Name of existing Network Connectivity Config"
 }
 
 variable "storage_accounts" {
