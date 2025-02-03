@@ -79,14 +79,15 @@ No modules.
 |------|------|
 | [databricks_mws_ncc_binding.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/mws_ncc_binding) | resource |
 | [databricks_mws_ncc_private_endpoint_rule.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/resources/mws_ncc_private_endpoint_rule) | resource |
+| [databricks_mws_network_connectivity_config.this](https://registry.terraform.io/providers/databricks/databricks/latest/docs/data-sources/mws_network_connectivity_config) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_databricks_workspace_id"></a> [databricks\_workspace\_id](#input\_databricks\_workspace\_id) | Target Databricks Workspace id | `string` | n/a | yes |
-| <a name="input_network_connectivity_config_id"></a> [network\_connectivity\_config\_id](#input\_network\_connectivity\_config\_id) | Existing Network Connectivity Config  ID in Databricks Account | `string` | n/a | yes |
-| <a name="input_storage_accounts"></a> [storage\_accounts](#input\_storage\_accounts) | List of object with parameters to configure NCC for Storage Account. Both blob and dfs private endpoints would be provisioned | <pre>list(object({<br>    name = string<br>    id   = string<br>  }))</pre> | n/a | yes |
+| <a name="input_network_connectivity_config_name"></a> [network\_connectivity\_config\_name](#input\_network\_connectivity\_config\_name) | Name of existing Network Connectivity Config | `string` | n/a | yes |
+| <a name="input_storage_accounts"></a> [storage\_accounts](#input\_storage\_accounts) | List of object with parameters to configure NCC for Storage Account. Both blob and dfs private endpoints would be provisioned | <pre>list(object({<br/>    name = string<br/>    id   = string<br/>  }))</pre> | n/a | yes |
 
 ## Outputs
 
